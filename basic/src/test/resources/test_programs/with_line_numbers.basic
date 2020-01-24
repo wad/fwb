@@ -1,0 +1,6 @@
+5 let i = 1
+10 print i
+20 let i = i + 1
+30 if i > 3 then 1001
+40 goto 10
+1001 print "done"

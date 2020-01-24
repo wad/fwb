@@ -1,0 +1,6 @@
+# This program has an error, and should not succeed.
+if 5 = "2" then error
+print "success!"
+end
+:error
+fail

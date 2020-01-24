@@ -1,0 +1,15 @@
+let times = 10
+let i = 0
+:startloop
+print "The number ";
+print i;
+print " is ";
+if i % 2 = 0 then even
+print "odd."
+goto endloop
+:even
+print "even."
+:endloop
+let i = i + 1
+if i < times then startloop
+end

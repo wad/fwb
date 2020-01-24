@@ -1,0 +1,58 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+      version="3.0"
+      metadata-complete="true">
+
+    <display-name>Fun With Basic</display-name>
+
+    <servlet>
+        <servlet-name>sessionExample</servlet-name>
+        <servlet-class>com.funwithbasic.server.experiment.SessionExample</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cookieExample</servlet-name>
+        <servlet-class>com.funwithbasic.server.experiment.CookieExample</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>helloWorld</servlet-name>
+        <servlet-class>com.funwithbasic.server.experiment.HelloWorld</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>floppyServlet</servlet-name>
+        <servlet-class>com.funwithbasic.server.floppy.FloppyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ownerServlet</servlet-name>
+        <servlet-class>com.funwithbasic.server.owner.OwnerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>appletConnectorServlet</servlet-name>
+        <servlet-class>com.funwithbasic.server.appletconnector.AppletConnectorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sessionExample</servlet-name>
+        <url-pattern>/x/s</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cookieExample</servlet-name>
+        <url-pattern>/x/c</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>helloWorld</servlet-name>
+        <url-pattern>/x/hi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>floppyServlet</servlet-name>
+        <url-pattern>/floppy</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ownerServlet</servlet-name>
+        <url-pattern>/owner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>appletConnectorServlet</servlet-name>
+        <url-pattern>/appletConnector</url-pattern>
+    </servlet-mapping>
+
+</web-app>

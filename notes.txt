@@ -1,0 +1,126 @@
+=============== NOTES ===============
+
+Cosmetic todo:
+* Use CSS to standardize fonts and stuff
+
+Improvements todo:
+* Drawing text: public void paint( Graphics g ) { g.setColor( Color.green ); g.drawString( s, x, y ); }
+
+Later todo:
+* Try on various browsers on various OSs
+* fix common error messages to be more helpful
+* Add file I/O functionality to BASIC
+* Add user login, sharing, forums, etc.
+* fix build so that the applet has no test code or test resources in the .jar file
+
+------------
+
+User activity flow for a guest:
+* User browses to funwithbasic.com
+* User sees a page where he can type in a BASIC program and click a RUN button (which has an animated arrow pointing to it).
+  - At the top is the logo, title, and a couple of links
+    - Link to sample programs (wiki)
+    - Link to login
+    - Link to register
+  - A simple "hello world" program is already there to run
+  - An empty panel below is titled, "Program runs in here"
+* User clicks "RUN"
+  - The applet is launched, and given the session ID
+  - The applet shows a control bar, with button "RUN AGAIN", "BREAK"
+  - The applet asks the server for the program to run, and specifies the session ID
+  - The applet receives the program to run
+  - The applet runs the program, showing output to the user
+  - The applet checks with the server every second to see if the user has pushed the "RUN" button again
+* Little animated arrow points to:
+  - The REGISTER link, with a text balloon "To save your programs, you need to register. It's free!"
+  - The COMMAND REFERENCE link, "Here are the BASIC commands available"
+  - The EXAMPLE PROGRAMS link, "Try some of these!"
+
+
+Users are given everything they want as soon as possible. Logging in and creating an account is only required to save their program on the server.
+
+Each registered user has a directory assigned to them, that they can put files into.
+Programs that a user runs can also access that directory, reading and writing (this allows games to save stuff).
+
+
+
+Features available for free:
+* Users can save multiple files in their directory, as many as they want
+* Can view the list of showcased programs, and try them out
+* Cannot share anything on the site with anyone else; all their stuff is private
+
+Features available for premium (paid) accounts:
+* Can participate in the user forums
+* Can showcase up to ten programs
+
+Tomcat 7.0.34
+http://tomcat.apache.org/download-70.cgi
+- put it into /usr/share/apache-tomcat-xxxxx owned by tomcat7:tomcat7
+- create /etc/default/tomcat7 with this:
+    JAVA_HOME="/usr/share/jre"
+    CATALINA_HOME="/usr/share/apache-tomcat-7.0.34"
+    CATALINA_BASE="/usr/share/apache-tomcat-7.0.34"
+    TOMCAT7_SECURITY=no
+- put a tomcat file into /etc/init.d and create symbolic links in rc[0123456].d
+- create a conf/policy.d directory with an empty file in it
+
+Java: version 7 update 10, 32-bit
+- put the jre on the server, in /usr/share/jre
+
+Applet:
+- Doesn't need to be signed. It can communicate only with the server that launched it.
+- See the wikipedia article on java applets for information on embedding it in the web page.
+
+Webpage:
+- The web page contains a RUN button. The applet monitors 
+
+Packaging:
+- Everything except for the database is contained in a web module (WAR file), including the applet, servlets, and html. There is a certain command that can be executed to wipe and recreate the database.
+
+---------------------
+
+*There is no one-size-fits-all design
+*Try to keep application as light weight as possible.
+*Use Maven to manage dependencies
+*Don't rely excessively on IDE. Make sure your project builds without IDE (If you are using maven, It will :) Try to open you project with Netbeans and Eclipse, both.
+*For the technologies mentioned above, appfuse makes a good starting point.
+*Design your database/entities first
+*Use libraries sensibly and judiciously. Do NOT overuse them.
+*Dont forget to write JUnit/TestNG (at least forservice layer)
+*Test application on all major browsers (not just your favorite one :)
+*Determine how many total users and how many concurrent users your web app will have.
+*Then decide whether you need caching or not.
+*you will use app server clustering or not.
+*Select the application server based on its capabilities and more importantly 'your needs'
+*Avoid using any app-server specific api
+*Use JPA interfaces/annotations even if using hibernate as JPA implementation
+*Be extra cautious while mapping relationships in entities. Decide which properties and relationships will load lazily and which will load eagerly
+*Keep application security in mind while designing the app. Spring security is excellent choice.
+*Never abuse HttpSession. Dont store too much in it.
+*Keep entities Serializable. Enforce developers to use toString(), hashCode() and equals()
+*Dont Forget to use version controlling from Day 1
+*Dont just assume that spring/hibernate/spring-mvc will be best choice for you. create small proof of concepts with atleast 3 to 4 options.
+*Try to automate integration/build/deploy with CI tools like Hudson
+*Check and Tune SQL generated by Hibernate (time to time)
+*do not let business logic creep into view layer. hate jsp scriptlets? Consider Velocity/Freemarker. JSP is not the only option.
+*externalize the environment specific configuration by using Spring's PropertyPlaceholderConfigurator.
+*If possible, try to integrate with existing User Authentication mechanism (Like LDAP/ OpenID) rather than writing your own. This will save you from reinventing the wheel and your users from remembering yet another set of username and password.
+
+-------------
+
+from IRC:
+
+Play! + ember.js + JQuery is what you need for front-end work.
+don't use Hibernate either :). use MyBatis
+you don't need to deal with JSP/Servlets these days
+also go with Jetty instead of Tomcat
+wad, you will need a security framework at some point, go with Shiro
+for sql script management, use something like liquidbase
+
+----------------
+
+mysql notes
+
+SHOW GLOBAL VARIABLES LIKE 'datadir';
+
+

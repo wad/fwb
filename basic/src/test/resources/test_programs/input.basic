@@ -1,0 +1,4 @@
+print 12
+input a$
+print 20
+print a$

@@ -1,0 +1,6 @@
+let i = 1
+:startloop
+print i
+let i = i + 1
+if i <= 3 then startloop
+end

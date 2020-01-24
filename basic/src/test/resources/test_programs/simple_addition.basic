@@ -1,0 +1,7 @@
+# this is a program that does some simple math
+:start
+let a = 1
+let b = 6
+let c = a + b
+print c
+

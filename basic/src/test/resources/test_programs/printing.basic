@@ -1,0 +1,3 @@
+print CONCAT("qwerty"," and \"me\"")
+let v$= CONCAT("Phil"," and \"me\"")
+print STRLEN(v$) + 1000

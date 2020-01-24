@@ -1,0 +1,7 @@
+if "howdy!" = "doody" then error
+if "doody!" <> "doody!" then error
+print "success!"
+end
+:error
+print "logic error!"
+fail

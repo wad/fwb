@@ -1,0 +1,13 @@
+print "Should be a blank line below."
+print
+print ;
+print "Should be a blank line above."
+print "The next line should read \"abc\"."
+print "a";
+print "b";
+print "c"
+print "The next line should read \"defdefdef\"."
+let x$= "def"
+print x$;
+print x$;
+print x$
